@@ -10,6 +10,7 @@
         @vite('resources/js/app.js')
     </head>
     <body>
+        @include('layout.partials.nav')
         @yield('content')
         @yield('script')
     </body>
