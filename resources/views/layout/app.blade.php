@@ -9,9 +9,12 @@
         <title>Life controller</title>
         @vite('resources/js/app.js')
     </head>
-    <body>
+    <body class="w-screen h-screen overflow-x-hidden" style="margin-bottom: 0;">
         @include('layout.partials.nav')
-        @yield('content')
+        <main class="w-10/12 min-h-screen float-left">
+            @include('layout.partials.top_bar')
+            @yield('content')
+        </main>
         @yield('script')
     </body>
 </html>

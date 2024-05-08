@@ -7,9 +7,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', DashboardController::class)->name('dashboard');
 
-Route::middleware('guest')->name('auth.')->group(function () {
-    Route::match(['GET', 'POST'], '/login',    [AuthController::class, 'login'   ])->name('login'   );
-    Route::match(['GET', 'POST'], '/register', [AuthController::class, 'register'])->name('register');
+Route::name('auth.')->group(function () {
+    Route::middleware('guest')->group(function () {
+        Route::match (['GET', 'POST'], '/login',    [AuthController::class, 'login'   ])->name('login'   );
+        Route::match (['GET', 'POST'], '/register', [AuthController::class, 'register'])->name('register');
+    });
+
+    Route::delete('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 });
 
 Route::middleware('auth')->group(function () {

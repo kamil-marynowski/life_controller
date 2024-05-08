@@ -10,7 +10,7 @@
         </a>
     </div>
     <div>
-        <table class="table">
+        <table class="table table-auto">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -22,7 +22,7 @@
                 @foreach($wallets as $wallet)
                     <tr>
                         <td>{{ $wallet->name }}</td>
-                        <td>{{ $wallet->cash }}</td>
+                        <td>{{ number_format($wallet->cash, 2, '.', '') }} zł</td>
                         <td>
                             <a href="{{ route('cash_controller.wallets.edit', ['wallet' => $wallet]) }}">Edit</a>
                         </td>

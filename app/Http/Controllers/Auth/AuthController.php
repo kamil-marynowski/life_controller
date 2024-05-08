@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -58,5 +59,17 @@ class AuthController extends Controller
         $user->assignRole('user');
 
         return redirect()->route('auth.login')->with('success', 'Account created successfully. You can sign in now.');
+    }
+
+    /**
+     * Logout user.
+     *
+     * @return RedirectResponse
+     */
+    public function logout(): RedirectResponse
+    {
+        Auth::logout();
+
+        return redirect()->route('auth.login');
     }
 }
