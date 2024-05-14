@@ -13,7 +13,9 @@
         @include('layout.partials.nav')
         <main class="w-10/12 min-h-screen float-left">
             @include('layout.partials.top_bar')
-            @yield('content')
+            <div id="content" class="p-4">
+                @yield('content')
+            </div>
         </main>
         @yield('script')
     </body>

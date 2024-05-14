@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\CashController;
 
 use App\Http\Controllers\Controller;
+use App\Models\CashController\Wallet;
 use App\Models\User;
-use App\Models\Wallet;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;

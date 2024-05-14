@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -17,10 +18,14 @@ class DashboardController extends Controller
      */
     public function __invoke(): View|RedirectResponse
     {
-        if (auth()->user()) {
-            return view('dashboard');
+        if ($this->userHasRole(roles: 'user')) {
+            return view(view: 'dashboard');
         }
 
-        return redirect()->route('auth.login');
+        if ($this->userHasRole(roles: 'admin')) {
+            return view(view: 'admin.dashboard');
+        }
+
+        return redirect()->route(route: 'auth.login');
     }
 }
